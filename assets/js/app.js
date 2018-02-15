@@ -3,6 +3,15 @@ const pokeSearch = document.getElementById('poke-search');
 const btn = document.getElementById('submit-btn');
 const container = document.getElementById('results-container');
 let poke;
+const name = document.getElementById('name');
+const niponName = document.getElementById('nipon-name');
+const description = document.getElementById('description');
+const height = document.getElementById('height');
+const category = document.getElementById('category');
+const weight = document.getElementById('weight');
+const abilities = document.getElementById('abilities');
+const types = document.getElementById('types');
+const counters = document.getElementById('counters');
 
 
 $('#poke-modal').on('shown.bs.modal', function () {
@@ -16,9 +25,6 @@ $('#results-container ul').on('click', 'li div', function() {
   putOnModalGeneral(pokeClass);
   putOnModalSpecies(pokeClass);
 })
-
-
-
 
 // función para enlistar a todos los pokes cuando uno entre a la página
 function putOnResults() {
@@ -121,6 +127,7 @@ function putOnModalGeneral(pokemon) {
       putOnModalType(types[k].type.name);
     }
     // HTML AQUÍ*****
+
   });
 }
 
