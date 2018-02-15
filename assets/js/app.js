@@ -3,15 +3,15 @@ const pokeSearch = document.getElementById('poke-search');
 const btn = document.getElementById('submit-btn');
 const container = document.getElementById('results-container');
 let poke;
-const name = document.getElementById('name');
-const niponName = document.getElementById('nipon-name');
-const description = document.getElementById('description');
-const height = document.getElementById('height');
-const category = document.getElementById('category');
-const weight = document.getElementById('weight');
-const abilities = document.getElementById('abilities');
-const types = document.getElementById('types');
-const counters = document.getElementById('counters');
+const nameHTML = document.getElementById('name');
+const niponNameHTML = document.getElementById('nipon-name');
+const descriptionHTML = document.getElementById('description');
+const heightHTML = document.getElementById('height');
+const categoryHTML = document.getElementById('category');
+const weightHTML = document.getElementById('weight');
+const abilitiesHTML = document.getElementById('abilities');
+const typesHTML = document.getElementById('types');
+const countersHTML = document.getElementById('counters');
 
 
 $('#poke-modal').on('shown.bs.modal', function () {
@@ -127,7 +127,7 @@ function putOnModalGeneral(pokemon) {
       putOnModalType(types[k].type.name);
     }
     // HTML AQUÍ*****
-
+    $(name).html(name)
   });
 }
 
