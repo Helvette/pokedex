@@ -5,12 +5,19 @@ const container = document.getElementById('results-container');
 let poke;
 
 
-$('#results-container ul').on('click', 'li', function() {
-  alert($(this).attr('id'));
+$('#poke-modal').on('shown.bs.modal', function () {
+  $('#myInput').trigger('focus')
+})
+
+$('#results-container ul').on('click', 'li div', function() {
+  //alert($(this).attr('id'));
   let pokeClass = $(this).attr('id');
+  $('#poke-modal').modal()
   putOnModalGeneral(pokeClass);
   putOnModalSpecies(pokeClass);
 })
+
+
 
 
 // función para enlistar a todos los pokes cuando uno entre a la página
@@ -71,7 +78,7 @@ function list(pokemon) {
   })
   .then(function(data) {
     let img = data.sprites.front_default;
-    $('#results-container ul').append(`<li id='${pokemon}' >${pokemon} <img src='${img}' alt='${pokemon}'> </li>`);
+    $('#results-container ul').append(`<li class='col-md-3'><div id='${pokemon}' data-toggle='modal' data-target='#${pokemon}-modal'><span>${pokemon}</span><img src='${img}' alt='${pokemon}'></div></li>`);
   })
 }
 
