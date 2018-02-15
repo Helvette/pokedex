@@ -23,7 +23,7 @@ function putOnResults() {
       console.log(data);
       const allPoke = data.pokemon_entries;
       console.log(allPoke)
-      for (let i = 0; i < 20/*allPoke.length*/; i++) {
+      for (let i = 0; i <= 20; i++) { //allPoke.length
         let name = allPoke[i].pokemon_species.name;
         list(name);
       }
@@ -71,7 +71,7 @@ function list(pokemon) {
   })
   .then(function(data) {
     let img = data.sprites.front_default;
-    $('#results-container ul').append(`<li id='${pokemon}' >${pokemon} <img src='${img} alt='${pokemon}'> </li>`);
+    $('#results-container ul').append(`<li id='${pokemon}' >${pokemon} <img src='${img}' alt='${pokemon}'> </li>`);
   })
 }
 
