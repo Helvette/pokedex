@@ -14,10 +14,6 @@ const typesHTML = document.getElementById('types');
 const countersHTML = document.getElementById('counters');
 
 
-$('#poke-modal').on('shown.bs.modal', function () {
-  $('#myInput').trigger('focus')
-})
-
 $('#results-container ul').on('click', 'li div', function() {
   //alert($(this).attr('id'));
   let pokeClass = $(this).attr('id');
