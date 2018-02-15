@@ -123,7 +123,6 @@ function putOnModalGeneral(pokemon) {
       putOnModalType(types[k].type.name);
     }
     // HTML AQUÍ*****
-    $(name).html(name)
   });
 }
 
