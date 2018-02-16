@@ -7,6 +7,22 @@ body {
   font-family: 'Source Code Pro', monospace;
 }
 
+/*scrollbar*/
+::-webkit-scrollbar-track {
+  border-left: 1px solid #373787;
+  border-right: 1px solid #373787;
+  background-color: #FFCF00;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: #FFCF00;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #373787;
+}
+
 /* logo */
 .logo {
   padding: 35px 0;
@@ -155,6 +171,7 @@ body {
 #poke-modal .one {
   display: block;
   font-size: 14px;
+  font-weight: 600;
 }
 
 .for-margin {
