@@ -81,6 +81,10 @@ body {
   background-image: url('../img/open-pokeball.png');
 }
 
+#submit-btn:disabled{
+  opacity: .8;
+}
+
 /* sección de carga */
 #loading-gif, #loading, #loading-gif-modal, #loading-modal {
   padding: 20px;
