@@ -13,7 +13,9 @@ const weightHTML = document.getElementById('weight');
 const abilitiesHTML = document.getElementById('abilities');
 const typesHTML = document.getElementById('types');
 const countersHTML = document.getElementById('counters');
-
+const logo = document.getElementById('logo');
+const previous = document.getElementsByClassName('previous')[0];
+const next = document.getElementsByClassName('next')[0];
 
 $('#results-container ul').on('click', 'li div', function() {
   //alert($(this).attr('id'));
@@ -31,37 +33,76 @@ $('#results-container ul').on('click', 'li div', function() {
   $(countersHTML).html('');
   putOnModalGeneral(pokeClass);
   putOnModalSpecies(pokeClass);
+});
+
+
+$('#results-container button').click(function() {
+  let url = this.dataset.url;
+  putOnResults(url);
 })
 
+$('#logo').click(function(){
+  putOnResults(`https://pokeapi.co/api/v2/pokemon/?limit=20`);
+});
 // función para enlistar a todos los pokes cuando uno entre a la página
-function putOnResults() {
-  fetch(`https://pokeapi.co/api/v2/pokedex/1`)
+function putOnResults(url) {
+  fetch(url)
     .then(function(response) {
       return response.json();
     })
     .then(function(data) {
       console.log(data);
-      const allPoke = data.pokemon_entries;
+      const allPoke = data.results;
       console.log(allPoke)
       for (let i = 0; i < 20; i++) { //allPoke.length
-        let name = allPoke[i].pokemon_species.name;
+        let name = allPoke[i].name;
         list(name);
       }
+      let nextUrl = data.next;
+      console.log(nextUrl);
+      console.log(next)
+      if (nextUrl !== null) {
+        $(next).removeAttr('disabled');
+      next.dataset.url = nextUrl;
+      } else {
+        $(next).attr('disabled', 'disabled');
+      }
+      let previousUrl = data.previous;
+      console.log(previousUrl);
+      if (previousUrl !== null) {
+        $(previous).removeAttr('disabled');
+        previous.dataset.url = previousUrl;
+      } else {
+        $(previous).attr('disabled', 'disabled');
+      }
+    }).then(function(){
+      $('#load').hide();
+    }).catch(function(error){
+      $('#load').empty();
+      $('#load').html('<p class="alert alert-danger text-center" role="alert">Omg! The server is down! Sorry.</p>');
     })
 }
-putOnResults();
+  //setTimeout(function(){$('#loading').hide(); $('#loading-gif').hide()}, 2800);
+  //putOnResults();
+putOnResults(`https://pokeapi.co/api/v2/pokemon/?limit=20`);
+
 
 
 form.addEventListener('submit', function(e) {
   e.preventDefault();
   container.innerHtml = '';
   poke = pokeSearch.value;
+  poke = poke.toLowerCase();
   $('#results-container ul').empty()
+  //<i class="fas fa-spinner"></i>
   searchPokemon(poke);
 })
 
+
+
 // funciòn que se llama al darle click al botón
 const searchPokemon = function(value) {
+  $('#load').show();
   fetch('https://pokeapi.co/api/v2/pokedex/1')
     .then(function(response) {
       //Turns the the JSON into a JS object
@@ -80,11 +121,17 @@ const searchPokemon = function(value) {
           list(name);
         }
       }
+    }).then(function() {
+      $('#load').hide();
+    }).catch(function(error) {
+      $('#load').empty();
+      $('#load').html('<p class="alert alert-danger text-center" role="alert">We dont find nothing! Sorry.</p>');
     });
 }
 
 // función para insertar HTML en el RESULTS-CONTAINER de la lista de los pokemons
 function list(pokemon) {
+  $('#results-container ul').empty();
   fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
   .then(function(response) {
     return response.json();
@@ -108,6 +155,8 @@ function list(pokemon) {
  * aquí los pasamos por una función que llamará esa url
  */
 function putOnModalGeneral(pokemon) {
+  $('.modal-body-load').show();
+  $('.modal-hide').hide();
   fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
   .then(function(response) {
     return response.json();
@@ -143,6 +192,11 @@ function putOnModalGeneral(pokemon) {
     for (let j = 0; j < abilities.length; j++) {
       $(abilitiesHTML).append(`<li>${abilities[j]}</li>`);
     }
+  }).then(function(){
+    $('.modal-body-load').hide();
+    $('.modal-hide').show();
+  }).catch(function(){
+    alert('error');
   });
 }
 
@@ -176,7 +230,7 @@ function putOnModalSpecies(pokemon) {
     let category = data.genera[2].genus;
     console.log(category)
     // HTML AQUÍ ****
-    $(niponNameHTML).html(japaneseName);
+    $(niponNameHTML).html(`「 ${japaneseName} 」`);
     $(descriptionHTML).html(description);
     $(categoryHTML).html(category);
   });
@@ -204,9 +258,9 @@ function putOnModalType(typeName) {
     }
     console.log(counters);
     // HTML AQUÍ******
-    $(typesHTML).append(`<li class="rounded">${type}</li>`);
+    $(typesHTML).append(`<li class="rounded ${type}">${type}</li>`);
     for (let k = 0; k < counters.length; k++) {
-      $(countersHTML).append(`<li class="rounded">${counters[k]}</li>`);
+      $(countersHTML).append(`<li class="rounded ${counters[k]}">${counters[k]}</li>`);
     }
   })
 }

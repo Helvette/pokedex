@@ -7,12 +7,79 @@ body {
   font-family: 'Source Code Pro', monospace;
 }
 
+/* logo */
+.logo {
+  padding: 35px 0;
+}
+
+.logo img {
+  cursor: pointer;
+}
+
+/* formulario, input y botón */
+#form {
+  padding: 0;
+  height: 40px;
+  width: 100%;
+}
+
+#form div {
+  padding: 0;
+}
+
+#poke-search {
+  width: 99%;
+  padding: 0 10px;
+  height: 40px;
+  background: rgba(255, 255, 255, .4);
+  border: none;
+  border-bottom: 1px solid #3A3A84;
+  border-radius: 5px;
+  color: #3A3A84;
+  font-size: 12px;
+}
+
+#poke-search::placeholder {
+  color: #3A3A84;
+  font-size: 12px;
+}
+
+#poke-search:focus {
+  border-radius: 6px;
+  outline: none;
+  border-bottom: 1px solid #3A3A84;
+}
+
+#submit-btn {
+ width: 40px;
+ padding: 0;
+ height: 40px;
+ background-color: transparent;
+ border: none;
+ outline: none;
+ cursor: pointer;
+ background-image: url('../img/close-pokeball.png');
+}
+
+#submit-btn:hover {
+  background-image: url('../img/open-pokeball.png');
+}
+
+/* sección de carga */
+#loading-gif, #loading, #loading-gif-modal, #loading-modal {
+  padding: 20px;
+  color: #9CCE84;
+}
+
+/* contenedor de pokemons */
 #results-container {
   background: rgba(255, 255, 255, .8);
   text-align: center;
-  padding: 20px 0;
+  padding: 30px 10px 50px 10px;
   margin: 40px 0;
   border-radius: 5px;
+  min-height: 300px;
+  position: relative;
 }
 
 #results-container ul {
@@ -20,7 +87,6 @@ body {
   padding: 0;
   margin: 0;
 }
-
 
 #results-container ul li {
   display:inline-block;
@@ -62,22 +128,87 @@ body {
   color: white;
 }
 
+.previous, .next {
+  position: absolute;
+  color: #FFCF00;
+  background-color: #373787;
+}
+
+.previous {
+  bottom: 10px;
+  left: 10px;
+}
+
+.next {
+  bottom: 10px;
+  right: 10px;
+}
+
+/* modal */
+.close {
+  position: absolute;
+  display: inline-block;
+  top: 10px;
+  right: 10px;
+}
 
 #poke-modal .one {
   display: block;
+  font-size: 14px;
 }
 
 .for-margin {
   margin: 10px 0;
 }
 
+.description-and-more, .name {
+  border: 2px solid white;
+  box-shadow: 0 1px 0 1px #191919,
+              inset 0 1px 0 1px #191919,
+              0 0 0 1px #191919,
+              inset 0 0 0 1px #191919;
+  border-radius: 5px;
+  padding: 15px 20px;
+}
+
 #poke-modal figure {
-  width: 100px;
-  height: 100px;
-  padding: 2px;
+  width: 105px;
+  height: 105px;
+  padding: 3px;
   border-radius: 50%;
-  border: 1px solid grey;
+  border: 2px solid white;
+  box-shadow: 0 1px 0 1px #191919,
+              inset 0 1px 0 1px #191919,
+              0 0 0 1px #191919,
+              inset 0 0 0 1px #191919;
   margin: 0 auto;
+}
+
+.for-content {
+  margin: 0;
+}
+
+.boxie {
+  padding: 0;
+  padding-right: 6px;
+
+}
+
+.boxie-two {
+  padding: 0;
+  padding-left: 6px;
+}
+
+.boxie-content {
+  width: 100%;
+  height: 100%;
+  padding: 15px 20px;
+  border-radius: 5px;
+  border: 2px solid white;
+  box-shadow: 0 1px 0 1px #191919,
+              inset 0 1px 0 1px #191919,
+              0 0 0 1px #191919,
+              inset 0 0 0 1px #191919;
 }
 
 .description-and-more {
@@ -104,10 +235,17 @@ body {
 #poke-modal .types-and-counters li {
   padding: 2px 10px;
   line-height: 25px;
-  border: 1px solid black;
+  box-shadow: 2px 1px 0 #3C3733;
   margin: 5px;
+  text-shadow: 2px 1px #3C3733;
+  color: white;
+  font-weight: 700;
 }
 
+#load-two {
+  width: 100%;
+  text-align: center;
+}
 .element {
   margin: 10px 0;
 }
@@ -122,4 +260,85 @@ display: inline-block;
 
 #types, #counters, #abilities {
   font-size: 14px;
+}
+
+.modal {
+  height: auto;
+}
+
+/* color según tipo */
+.normal {
+  background-color: #A9A878;
+}
+
+.bug {
+  background-color: #A8B820;
+}
+
+.fighting {
+  background-color: #C02F27;
+}
+
+.ghost {
+  background-color: #715799;
+}
+
+.electric {
+  background-color: #F9D130;
+}
+
+.flying {
+  background-color: #A68DF0;
+}
+
+.steel {
+  background-color: #B8B8D0;
+}
+
+.psychic {
+  background-color: #F95788;
+}
+
+.poison {
+  background-color: #A03FA1;
+}
+
+.fire {
+  background-color: #F17F2E;
+}
+
+.ice {
+  background-color: #98D9D9;
+}
+
+.ground {
+  background-color: #E0BD5D;
+}
+
+.water {
+  background-color: #6890F0;
+}
+
+.dragon {
+  background-color: #6F37F9;
+}
+
+.rock {
+  background-color: #B89F38;
+}
+
+.grass {
+  background-color: #78C850;
+}
+
+.dark {
+  background-color: #6F5747;
+}
+
+.steel {
+  background-color: #B8B8D0;
+}
+
+.fairy {
+  background-color: #EE99AC;
 }

@@ -5,34 +5,69 @@
   <title>Pokedex</title>
   <!-- bootstrap -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+  <!-- nuestros estilos -->
   <link rel="stylesheet" href="assets/css/styles.css">
+  <!-- favicon -->
+  <link rel="icon" type="image/png" href="assets/img/favicon.png" sizes="16x16"/>
 </head>
 <body>
   <div class="container">
-    
-    <form action="" id="form">
-      <input type="text" id="poke-search">
-      <input type="submit" id="submit-btn">
-    </form>
+    <div class="row logo text-center">
+      <figure class="col-md-12">
+        <img src="assets/img/logo.png" alt="Pokedex" id="logo">
+      </figure>
+    </div>
+    <div class="row">
+      <form action="" id="form" class="row">
+        <div class="col-md-5 offset-md-3">
+          <input type="text" id="poke-search" class="" placeholder="Search your Pokemon here!">
+        </div>
+        <div class="col-md-1 text-center">
+          <input type="submit" id="submit-btn" value="">
+        </div>
+      </form>
+    </div>
+
     <div id="results-container">
+      <div id="load">
+        <div id="loading">
+          <i class="fas fa-spinner fa-2x fa-pulse"></i>
+        </div>
+        <div id="loading-gif">
+          <img src="assets/img/loading.gif" alt="Loading!">
+        </div>
+      </div>
       <ul>
       <!-- pokemons aquí -->
       </ul>
-    </div>
-    <div class="load">
-      <p>cargando</p>
+      <button class="previous btn"><i class="fas fa-step-backward"></i></button>
+      <button class="next btn"><i class="fas fa-step-forward"></i></button>
     </div>
 
     <!-- modal -->
     <div class="modal fade bd-example-modal-lg" id="poke-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
-          <div class="modal-body">
+          <!-- LOAD DE MODAL -->
+          <div class="modal-body modal-body-load">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <div id="load-two">
+              <div id="loading-modal">
+                <i class="fas fa-spinner fa-2x fa-pulse"></i>
+              </div>
+              <div id="loading-gif-modal">
+                <img src="assets/img/loading.gif" alt="Loading!">
+              </div>
+            </div>
+          </div>
+          <!-- FIN LOAD DE MODAL -->
+          <div class="modal-body modal-hide">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
             <div class="container-fluid">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
               <!-- row for title -->
               <div class="row for-margin">
                 <div class="col-md-12 name text-center">
@@ -43,39 +78,41 @@
                 </div>
               </div>
               <!-- row for content -->
-              <div class="row">
-                <div class="col-md-5 text-center for-margin" id="image">
+              <div class="row for-content">
+                <div class="col-md-4 text-center for-margin" id="image">
                   Imagen
                 </div>
-                <div class="col-md-7 description-and-more for-margin">
+                <div class="col-md-8 description-and-more for-margin">
                     <p id="description" class="align-middle"> descripción </p>
                 </div>
                 <div class="boxie col-md-6 for-margin">
-                  <div class="row">
-                    <div class="col-md-6 height element">
-                      <span class="one">Height:</span>
-                      <span class="two" id="height">altura aquí</span>
+                  <div class="boxie-content">
+                    <div class="row">
+                      <div class="col-md-6 height element">
+                        <span class="one">Height:</span>
+                        <span class="two" id="height">altura aquí</span>
+                      </div>
+                      <div class="col-md-6 category element">
+                        <span class="one">Category:</span>
+                        <span class="two" id="category">categoría aquí</span>
+                      </div>
                     </div>
-                    <div class="col-md-6 category element">
-                      <span class="one">Category:</span>
-                      <span class="two" id="category">categoría aquí</span>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-6 weight element">
-                      <span class="one">Weight:</span>
-                      <span class="two toUp" id="weight">peso aquí</span>
-                    </div>
-                    <div class="col-md-6 abilities element">
-                      <span class="one">Abilities:</span>
-                      <ul id="abilities" class="toUp">
-                        <li>habilidades acá</li>
-                      </ul>
+                    <div class="row">
+                      <div class="col-md-6 weight element">
+                        <span class="one">Weight:</span>
+                        <span class="two" id="weight">peso aquí</span>
+                      </div>
+                      <div class="col-md-6 abilities element">
+                        <span class="one">Abilities:</span>
+                        <ul id="abilities" class="toUp">
+                          <li>habilidades acá</li>
+                        </ul>
+                      </div>
                     </div>
                   </div>
                 </div>
                 <div class="boxie-two col-md-6 for-margin">
-                  <div class="types-and-counters">
+                  <div class="types-and-counters boxie-content">
                     <div class="row">
                       <div class="col-md-12 element">
                         <span class="one">Types:</span>
@@ -108,5 +145,6 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <script src="assets/js/app.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,600,700" rel="stylesheet">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.1/js/all.js"></script>
 </body>
 </html>
