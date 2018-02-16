@@ -11,12 +11,15 @@
   <link rel="icon" type="image/png" href="assets/img/favicon.png" sizes="16x16"/>
 </head>
 <body>
+  <!-- contenedor página -->
   <div class="container">
+    <!-- logo -->
     <div class="row logo text-center">
       <figure class="col-md-12">
         <img src="assets/img/logo.png" alt="Pokedex" id="logo">
       </figure>
     </div>
+    <!-- formulario -->
     <div class="row">
       <form action="" id="form" class="row">
         <div class="col-md-5 offset-md-3">
@@ -27,8 +30,8 @@
         </div>
       </form>
     </div>
-
     <div id="results-container">
+      <!-- sección load -->
       <div id="load">
         <div id="loading">
           <i class="fas fa-spinner fa-2x fa-pulse"></i>
@@ -43,7 +46,6 @@
       <button class="previous btn"><i class="fas fa-step-backward"></i></button>
       <button class="next btn"><i class="fas fa-step-forward"></i></button>
     </div>
-
     <!-- modal -->
     <div class="modal fade bd-example-modal-lg" id="poke-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
@@ -85,6 +87,7 @@
                 <div class="col-md-8 description-and-more for-margin">
                     <p id="description" class="align-middle"> descripción </p>
                 </div>
+                <!-- peso, altura, categoría, habilidades -->
                 <div class="boxie col-md-6 for-margin">
                   <div class="boxie-content">
                     <div class="row">
@@ -111,6 +114,7 @@
                     </div>
                   </div>
                 </div>
+                <!-- tipos y debilidades -->
                 <div class="boxie-two col-md-6 for-margin">
                   <div class="types-and-counters boxie-content">
                     <div class="row">
@@ -139,12 +143,15 @@
     </div>
   </div>
 
-  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <!-- jquery -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <!-- bootrap -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <!-- nuestro js -->
   <script src="assets/js/app.js"></script>
+  <!-- google fonts -->
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,600,700" rel="stylesheet">
+  <!-- fontawesome -->
   <script defer src="https://use.fontawesome.com/releases/v5.0.1/js/all.js"></script>
 </body>
 </html>

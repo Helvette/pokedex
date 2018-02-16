@@ -1,3 +1,6 @@
+/**
+ * elementos DOM que necesitaremos
+ */
 const form = document.getElementById('form');
 const pokeSearch = document.getElementById('poke-search');
 const btn = document.getElementById('submit-btn');
@@ -17,8 +20,14 @@ const logo = document.getElementById('logo');
 const previous = document.getElementsByClassName('previous')[0];
 const next = document.getElementsByClassName('next')[0];
 
+/**
+ * imprimir pokemons al cargar la página
+ */
+putOnResults(`https://pokeapi.co/api/v2/pokemon/?limit=20`);
+/**
+ * click en un pokemon
+ */
 $('#results-container ul').on('click', 'li div', function() {
-  //alert($(this).attr('id'));
   let pokeClass = $(this).attr('id');
   $('#poke-modal').modal()
   $(nameHTML).html('');
@@ -35,32 +44,36 @@ $('#results-container ul').on('click', 'li div', function() {
   putOnModalSpecies(pokeClass);
 });
 
-
+/**
+ * click en botón previous o next
+ */
 $('#results-container button').click(function() {
   let url = this.dataset.url;
   putOnResults(url);
 })
 
+/**
+ * click en el logo, vuelve a los 20 primeros
+ */
 $('#logo').click(function(){
   putOnResults(`https://pokeapi.co/api/v2/pokemon/?limit=20`);
 });
-// función para enlistar a todos los pokes cuando uno entre a la página
+
+/**
+ * función para llamar a la api e imprimir pokemons
+ */
 function putOnResults(url) {
   fetch(url)
     .then(function(response) {
       return response.json();
     })
     .then(function(data) {
-      console.log(data);
       const allPoke = data.results;
-      console.log(allPoke)
-      for (let i = 0; i < 20; i++) { //allPoke.length
+      for (let i = 0; i < allPoke.length; i++) {
         let name = allPoke[i].name;
         list(name);
       }
       let nextUrl = data.next;
-      console.log(nextUrl);
-      console.log(next)
       if (nextUrl !== null) {
         $(next).removeAttr('disabled');
       next.dataset.url = nextUrl;
@@ -68,7 +81,6 @@ function putOnResults(url) {
         $(next).attr('disabled', 'disabled');
       }
       let previousUrl = data.previous;
-      console.log(previousUrl);
       if (previousUrl !== null) {
         $(previous).removeAttr('disabled');
         previous.dataset.url = previousUrl;
@@ -82,42 +94,37 @@ function putOnResults(url) {
       $('#load').html('<p class="alert alert-danger text-center" role="alert">Omg! The server is down! Sorry.</p>');
     })
 }
-  //setTimeout(function(){$('#loading').hide(); $('#loading-gif').hide()}, 2800);
-  //putOnResults();
-putOnResults(`https://pokeapi.co/api/v2/pokemon/?limit=20`);
 
-
-
+/**
+ * click en el botón para buscar -pokebola-
+ */
 form.addEventListener('submit', function(e) {
   e.preventDefault();
   container.innerHtml = '';
   poke = pokeSearch.value;
   poke = poke.toLowerCase();
   $('#results-container ul').empty()
-  //<i class="fas fa-spinner"></i>
   searchPokemon(poke);
 })
 
 
 
-// funciòn que se llama al darle click al botón
+/**
+ * función que llama a la api al darle click al botón
+ */
 const searchPokemon = function(value) {
   $('#load').show();
   fetch('https://pokeapi.co/api/v2/pokedex/1')
     .then(function(response) {
-      //Turns the the JSON into a JS object
       return response.json();
     })
     .then(function(data) {
-      console.log(data);
        // aquí muestra datos básicos de todos los pokemons
       const allPoke = data.pokemon_entries;
-      console.log(allPoke);
       // pero para acceder a los nombres, hay que entrar a otra propiedad
       for (let i = 0; i < allPoke.length; i++) {
         let name = allPoke[i].pokemon_species.name;
         if (name.indexOf(value) !== -1) {
-          console.log(name);
           list(name);
         }
       }
@@ -129,7 +136,9 @@ const searchPokemon = function(value) {
     });
 }
 
-// función para insertar HTML en el RESULTS-CONTAINER de la lista de los pokemons
+/**
+ * función para insertar HTML en el RESULTS-CONTAINER de la lista de los pokemons
+ */
 function list(pokemon) {
   $('#results-container ul').empty();
   fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
@@ -141,7 +150,6 @@ function list(pokemon) {
     $('#results-container ul').append(`<li class=''><div id='${pokemon}' data-toggle='modal' data-target='#${pokemon}-modal'><span class='toUp'>${pokemon}</span><figure><img src='${img}' alt='${pokemon}'></div></li></figure>`);
   })
 }
-
 
 /**
  * Función para insertar HTML en MODAL
@@ -162,28 +170,20 @@ function putOnModalGeneral(pokemon) {
     return response.json();
   })
   .then(function(data) {
-    console.log(data);
     let name = data.name;
-    console.log(name)
     let img = data.sprites.front_default;
-    console.log(img)
     let height = `${data.height/10} m`;
-    console.log(height)
     let weight = `${data.weight/10} kg`;
-    console.log(weight)
     let abilities = [];
     for (let i = 0; i < data.abilities.length; i++) {
       let each = data.abilities[i];
       abilities.push(each.ability.name);
     }
-    console.log(abilities)
     let types = data.types;
     $(typesHTML).html('');
     for (let k = 0; k < types.length; k++) {
-      console.log(types[k])
       putOnModalType(types[k].type.name);
     }
-    // HTML AQUÍ*****
     $(nameHTML).html(name);
     $(imgHTML).html(`<figure><img src='${img}' class= "align-middle"></figure>`);
     $(heightHTML).html(height);
@@ -213,9 +213,7 @@ function putOnModalSpecies(pokemon) {
     return response.json();
   })
   .then(function(data) {
-    console.log(data);
     let japaneseName = data.names[1].name;
-    console.log(japaneseName)
     let array = data.flavor_text_entries;
     let description = '';
     for (var i = 0; i < array.length; i++){
@@ -226,10 +224,7 @@ function putOnModalSpecies(pokemon) {
         description = array[i].flavor_text;
       }
     }
-    console.log(description)
     let category = data.genera[2].genus;
-    console.log(category)
-    // HTML AQUÍ ****
     $(niponNameHTML).html(`「 ${japaneseName} 」`);
     $(descriptionHTML).html(description);
     $(categoryHTML).html(category);
@@ -247,27 +242,16 @@ function putOnModalType(typeName) {
     return response.json();
   })
   .then(function(data){
-    console.log(data);
     let type = data.name;
-    console.log('este pokemon tiene tipo: ' + type);
     let array = data.damage_relations;
     array = array.double_damage_from;
     let counters = [];
     for (let i = 0; i < array.length; i++) {
       counters.push(array[i].name);
     }
-    console.log(counters);
-    // HTML AQUÍ******
     $(typesHTML).append(`<li class="rounded ${type}">${type}</li>`);
     for (let k = 0; k < counters.length; k++) {
       $(countersHTML).append(`<li class="rounded ${counters[k]}">${counters[k]}</li>`);
     }
   })
 }
-
-
-
-
-  /*
-  'https://pokeapi.co/api/v2/pokemon/?limit=20&offset=20' son 807
-  */
