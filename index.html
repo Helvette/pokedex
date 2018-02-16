@@ -10,6 +10,7 @@
 </head>
 <body>
   <div class="container">
+    
     <form action="" id="form">
       <input type="text" id="poke-search">
       <input type="submit" id="submit-btn">
@@ -17,13 +18,11 @@
     <div id="results-container">
       <ul>
       <!-- pokemons aquí -->
-      <li class='col-md-3'><div id='eevee' data-toggle='modal' data-target='poke-modal'><span>eevee</span></div></li>`
       </ul>
     </div>
     <div class="load">
       <p>cargando</p>
     </div>
-
 
     <!-- modal -->
     <div class="modal fade bd-example-modal-lg" id="poke-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -31,64 +30,66 @@
         <div class="modal-content">
           <div class="modal-body">
             <div class="container-fluid">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">cerrar</button>
-              <div class="row">
-                <div class="col-md-12 name">
-                  <h2 id="name">Name</h2>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <!-- row for title -->
+              <div class="row for-margin">
+                <div class="col-md-12 name text-center">
+                  <h2 id="name" class="toUp">Name</h2>
                   <span id="nipon-name">
                     Nipon Name
                   </span>
                 </div>
               </div>
-              
+              <!-- row for content -->
               <div class="row">
-                <div class="col-md-5 image">
+                <div class="col-md-5 text-center for-margin" id="image">
                   Imagen
                 </div>
-                <div class="col-md-7 description-and-more">
-                  <div class="box">
-                    <p id="description"> descripción </p>
-                    <div class="boxie">
-                      <div class="row">
-                        <div class="col-md-6 height element">
-                          <span class="one">Height:</span>
-                          <span class="two" id="height">altura aquí</span>
-                        </div>
-                        <div class="col-md-6 category element">
-                          <span class="one">Category:</span>
-                          <span class="two" id="category">categoría aquí</span>
-                        </div>
-                      </div>
-
-                      <div class="row">
-                        <div class="col-md-6 weight element">
-                          <span class="one">Weight:</span>
-                          <span class="two" id="weight">peso aquí</span>
-                        </div>
-                        <div class="col-md-6 abilities element">
-                          <span class="one">Abilities:</span>
-                          <ul id="abilities">
-                            <li>habilidades acá</li>
-                          </ul>
-                        </div>
+                <div class="col-md-7 description-and-more for-margin">
+                    <p id="description" class="align-middle"> descripción </p>
+                </div>
+                <div class="boxie col-md-6 for-margin">
+                  <div class="row">
+                    <div class="col-md-6 height element">
+                      <span class="one">Height:</span>
+                      <span class="two" id="height">altura aquí</span>
+                    </div>
+                    <div class="col-md-6 category element">
+                      <span class="one">Category:</span>
+                      <span class="two" id="category">categoría aquí</span>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6 weight element">
+                      <span class="one">Weight:</span>
+                      <span class="two toUp" id="weight">peso aquí</span>
+                    </div>
+                    <div class="col-md-6 abilities element">
+                      <span class="one">Abilities:</span>
+                      <ul id="abilities" class="toUp">
+                        <li>habilidades acá</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="boxie-two col-md-6 for-margin">
+                  <div class="types-and-counters">
+                    <div class="row">
+                      <div class="col-md-12 element">
+                        <span class="one">Types:</span>
+                        <ul id="types" class="toUp">
+                          <li>tipos</li>
+                        </ul>
                       </div>
                     </div>
-                    <div class="types-and-counters">
-                      <div class="row">
-                        <div class="col-md-12 element">
-                          <span class="one">Types:</span>
-                          <ul id="types">
-                            <li>tipos</li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-12 element">
-                          <span class="one">Counters:</span>
-                          <ul id="counters">
-                            <li>counters</li>
-                          </ul>
-                        </div>
+                    <div class="row">
+                      <div class="col-md-12 element">
+                        <span class="one">Counters:</span>
+                        <ul id="counters" class="toUp">
+                          <li>counters</li>
+                        </ul>
                       </div>
                     </div>
                   </div>
@@ -101,12 +102,11 @@
     </div>
   </div>
 
-
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
   <script src="assets/js/app.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,600,700" rel="stylesheet">
 </body>
 </html>

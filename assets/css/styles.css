@@ -1,3 +1,20 @@
+body {
+  background-image: url(../img/background.png);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: 100%;
+  font-family: 'Source Code Pro', monospace;
+}
+
+#results-container {
+  background: rgba(255, 255, 255, .8);
+  text-align: center;
+  padding: 20px 0;
+  margin: 40px 0;
+  border-radius: 5px;
+}
+
 #results-container ul {
   list-style: none;
   padding: 0;
@@ -9,21 +26,69 @@
   display:inline-block;
   padding: 10px 20px;
   text-align: center;
+  width: 200px;
+  height: 150px;
 }
 
 #results-container ul li div {
   position: relative;
   width: 100%;
-  background-color: red;
+  height: 100%;
+  background-color: #A8A878;
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+  box-shadow: 3px 4px 3px 1px #ccc;
+}
+
+#results-container ul li div:hover {
+  background-color: rgba(168, 168, 120, .8);
+}
+
+#results-container figure {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #results-container ul li div span {
   position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 3px 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  font-size: 12px;
+  color: white;
 }
 
 
 #poke-modal .one {
   display: block;
+}
+
+.for-margin {
+  margin: 10px 0;
+}
+
+#poke-modal figure {
+  width: 100px;
+  height: 100px;
+  padding: 2px;
+  border-radius: 50%;
+  border: 1px solid grey;
+  margin: 0 auto;
+}
+
+.description-and-more {
+  display: flex;
+  flex-direction: row;
+}
+
+.description-and-more p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #poke-modal ul {
@@ -32,6 +97,29 @@
   list-style: none;
 }
 
+#poke-modal li {
+  display: inline-block;
+}
+
+#poke-modal .types-and-counters li {
+  padding: 2px 10px;
+  line-height: 25px;
+  border: 1px solid black;
+  margin: 5px;
+}
+
 .element {
   margin: 10px 0;
+}
+
+.toUp {
+  text-transform: uppercase;
+}
+
+#poke-modal h2 {
+display: inline-block;
+}
+
+#types, #counters, #abilities {
+  font-size: 14px;
 }

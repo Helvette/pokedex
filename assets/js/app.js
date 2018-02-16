@@ -4,6 +4,7 @@ const btn = document.getElementById('submit-btn');
 const container = document.getElementById('results-container');
 let poke;
 const nameHTML = document.getElementById('name');
+const imgHTML = document.getElementById('image');
 const niponNameHTML = document.getElementById('nipon-name');
 const descriptionHTML = document.getElementById('description');
 const heightHTML = document.getElementById('height');
@@ -18,6 +19,16 @@ $('#results-container ul').on('click', 'li div', function() {
   //alert($(this).attr('id'));
   let pokeClass = $(this).attr('id');
   $('#poke-modal').modal()
+  $(nameHTML).html('');
+  $(imgHTML).html('');
+  $(niponNameHTML).html('');
+  $(descriptionHTML).html('');
+  $(heightHTML).html('');
+  $(categoryHTML).html('');
+  $(weightHTML).html('');
+  $(abilitiesHTML).html('');
+  $(typesHTML).html('');
+  $(countersHTML).html('');
   putOnModalGeneral(pokeClass);
   putOnModalSpecies(pokeClass);
 })
@@ -32,7 +43,7 @@ function putOnResults() {
       console.log(data);
       const allPoke = data.pokemon_entries;
       console.log(allPoke)
-      for (let i = 0; i <= 20; i++) { //allPoke.length
+      for (let i = 0; i < 20; i++) { //allPoke.length
         let name = allPoke[i].pokemon_species.name;
         list(name);
       }
@@ -80,7 +91,7 @@ function list(pokemon) {
   })
   .then(function(data) {
     let img = data.sprites.front_default;
-    $('#results-container ul').append(`<li class='col-md-3'><div id='${pokemon}' data-toggle='modal' data-target='#${pokemon}-modal'><span>${pokemon}</span><img src='${img}' alt='${pokemon}'></div></li>`);
+    $('#results-container ul').append(`<li class=''><div id='${pokemon}' data-toggle='modal' data-target='#${pokemon}-modal'><span class='toUp'>${pokemon}</span><figure><img src='${img}' alt='${pokemon}'></div></li></figure>`);
   })
 }
 
@@ -118,11 +129,20 @@ function putOnModalGeneral(pokemon) {
     }
     console.log(abilities)
     let types = data.types;
+    $(typesHTML).html('');
     for (let k = 0; k < types.length; k++) {
       console.log(types[k])
       putOnModalType(types[k].type.name);
     }
     // HTML AQUÍ*****
+    $(nameHTML).html(name);
+    $(imgHTML).html(`<figure><img src='${img}' class= "align-middle"></figure>`);
+    $(heightHTML).html(height);
+    $(weightHTML).html(weight);
+    $(abilitiesHTML).html('');
+    for (let j = 0; j < abilities.length; j++) {
+      $(abilitiesHTML).append(`<li>${abilities[j]}</li>`);
+    }
   });
 }
 
@@ -156,6 +176,9 @@ function putOnModalSpecies(pokemon) {
     let category = data.genera[2].genus;
     console.log(category)
     // HTML AQUÍ ****
+    $(niponNameHTML).html(japaneseName);
+    $(descriptionHTML).html(description);
+    $(categoryHTML).html(category);
   });
 }
 /**
@@ -181,6 +204,10 @@ function putOnModalType(typeName) {
     }
     console.log(counters);
     // HTML AQUÍ******
+    $(typesHTML).append(`<li class="rounded">${type}</li>`);
+    for (let k = 0; k < counters.length; k++) {
+      $(countersHTML).append(`<li class="rounded">${counters[k]}</li>`);
+    }
   })
 }
 
