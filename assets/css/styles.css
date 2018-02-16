@@ -3,7 +3,7 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
-  background-size: 100%;
+  background-size: cover;
   font-family: 'Source Code Pro', monospace;
 }
 
@@ -362,4 +362,15 @@ display: inline-block;
 
 .fairy {
   background-color: #EE99AC;
+}
+
+
+@media (max-width: 576px) {
+  .boxie {
+    padding: 0;
+  }
+
+  .boxie-two {
+    padding: 0;
+  }
 }
