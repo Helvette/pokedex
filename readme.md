@@ -18,9 +18,9 @@ Información por Pokémon:
 
 ![Página de Inicio](assets/img/pokedex-cut.png)
 
-![Búsqueda](assets/img/Pokedex.ong)
+![Búsqueda](assets/img/Pokedex.png)
 
-![Responsive](assets/img/pokedex-cell.png)
+![Responsive](assets/img/cut-poke-cel.png)
 
 ## Herramientas y Lenguajes
  + [RESTful API Pokéapi](https://pokeapi.co/)
