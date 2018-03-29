@@ -14,9 +14,10 @@ Información por Pokémon:
 + Tipos
 + Debilidades
 
-## Vista previa
-
 ![Página de Inicio](assets/img/pokedex-cut.png)
+
+## Vistas Previas
+![Pantalla Full](assets/img/full-pokedex.png)
 
 ![Búsqueda](assets/img/Pokedex.png)
 
@@ -27,3 +28,6 @@ Información por Pokémon:
  + Javascript
  + jQuery 3.2.1
  + Bootstrap
+ 
+ ## Desarrollado para
+ + [Laboratoria](http://www.laboratoria.la/)
