@@ -2,7 +2,7 @@
 
 Catálogo Pokémon; enlista a los Pokemon mostrando 20 por página y además cuenta un buscador que entrega todas las coincidencias con el valor ingresado.
 
-![pokedex-preview](assets/img/pokedex-cut.png)
+![pokedex-preview](https://user-images.githubusercontent.com/32281138/38101507-de491e78-3356-11e8-974a-90dd5cf68fae.png)
 
 Información por Pokémon:
 + Nombre
