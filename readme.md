@@ -17,7 +17,7 @@ Información por Pokémon:
 + Debilidades
 
 ## Herramientas y Lenguajes
- + [RESTful API Pokéapi](https://pokeapi.co/)
+ + RESTful API Pokéapi >>> https://pokeapi.co/
  + Javascript
  + jQuery 3.2.1
  + Bootstrap
@@ -29,4 +29,5 @@ Información por Pokémon:
 
 ![Responsive](assets/img/cut-poke-cel.png)
 
- ## Desarrollado para [Laboratoria](http://www.laboratoria.la/)
+ ## Desarrollado para 
+ + [Laboratoria](http://www.laboratoria.la/)
