@@ -16,20 +16,18 @@ Información por Pokémon:
 + Tipos
 + Debilidades
 
+## Herramientas y Lenguajes
+ + [RESTful API Pokéapi](https://pokeapi.co/)
+ + Javascript
+ + jQuery 3.2.1
+ + Bootstrap
 
-
-### Vistas Previas
+## Vistas Previas
 ![Pantalla Full](assets/img/full-pokedex.png)
 
 ![Búsqueda](assets/img/Pokedex.png)
 
 ![Responsive](assets/img/cut-poke-cel.png)
 
-### Herramientas y Lenguajes
- + [RESTful API Pokéapi](https://pokeapi.co/)
- + Javascript
- + jQuery 3.2.1
- + Bootstrap
- 
  ## Desarrollado para
- + [Laboratoria](http://www.laboratoria.la/)
+ [Laboratoria](http://www.laboratoria.la/)
